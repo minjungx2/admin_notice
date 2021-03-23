@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.judy.notice.mapper.NoticeMapper">
+	<select id="getList" resultType="org.judy.notice.domain.Notice">
+		select * from tbl_notice
+	</select>
+	
+	<select id="getOne" resultType="org.judy.notice.domain.Notice">
+		select * from tbl_notice where nno=#{nno}
+	</select>
+	
+	<insert id="insert">
+	insert into tbl_notice (title,context,writer,img) values(#{title}, #{context}, #{writer}, #{img})
+	</insert>
+	
+</mapper>
