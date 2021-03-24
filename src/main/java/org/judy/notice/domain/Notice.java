@@ -18,10 +18,10 @@ public class Notice {
 	
 	private Integer nno;
 	private String title;
-	private String context;
+	private String content;
 	private String writer;
-	private String img;
-	private Date regdate, updatedate;
 	private Boolean show;
-
+	private String category;
+	private Date regdate, updatedate;
+	
 }

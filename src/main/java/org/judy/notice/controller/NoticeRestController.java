@@ -9,9 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,28 +29,21 @@ public class NoticeRestController {
 
 	private final NoticeService service;
 	
-	@GetMapping(value = "/list", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<NoticeDTO>> getList() {
 		
 		log.info("list controller..............");
 		
-		return new ResponseEntity<List<NoticeDTO>>(service.getList(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getList(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/read/{nno}")
-	public void getOne(Model model,@PathVariable("nno") Integer nno) {
+	@GetMapping(value = "/{nno}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<NoticeDTO> getOne(@PathVariable("nno") Integer nno) {
 		
-		log.info("read controller............");
-		
-		model.addAttribute("notice", service.getOne(nno));
+		return new ResponseEntity<>(service.getOne(nno),HttpStatus.OK);
 	}
 	
-	@GetMapping("/register")
-	public void getInsert() {
-		
-	}
-	
-	@PostMapping("/register")
+	@PostMapping("/")
 	public void postInsert(@RequestBody NoticeDTO dto) {
 		
 		log.info("insert.................");
@@ -56,5 +51,16 @@ public class NoticeRestController {
 		service.insert(dto);
 		
 	}
+	
+	@PutMapping("/")
+	public void modify() {
+		
+	}
+	
+	@DeleteMapping("/")
+	public void delete() {
+		
+	}
+	
 	
 }

@@ -36,7 +36,7 @@ public class NoticeMapperTests {
 		
 		Notice vo = Notice.builder()
 				.title("테스트제목")
-				.context("테스트 내용")
+				.content("테스트 내용")
 				.writer("user00")
 				.build();
 				

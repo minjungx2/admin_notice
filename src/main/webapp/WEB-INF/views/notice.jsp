@@ -1,33 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>list page</h1>
-	<h2>${list }</h2>
-	
-	<ul>
-	</ul>
-	
- <script src="/resources/service.js"></script>
- 
- <script>
+<%@ include file="includes/header.jsp"%>
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-primary">
+						<h4 class="card-title">Simple Table</h4>
+						<p class="card-category">Here is a subtitle for this table</p>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead class=" text-primary">
+									<th>Nno</th>
+									<th>Title</th>
+									<th>Content</th>
+									<th>Writer</th>
+									<th>regDate</th>
+									<th>updateDate</th>
+								</thead>
+								<tbody class="tList">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="/resources/service.js"></script>
+<script>
  
  const list = service.list();
  
- const ul =  document.querySelector("ul")
+ const ul =  document.querySelector(".tList")
 
- console.log(list)
+ function moveRead(param){
+	 
+	 self.location ="/notice/read/"+param
+	 
+ }
+ 
  
   list.then(result => {
-	    for (const list of result) {
-	        console.log(list)
-	        ul.innerHTML += "<li>"+list.context+"</li>" 
- }})
- </script>
-</body>
-</html>
+	 for(const list of result) {
+	     ul.innerHTML += "<tr><td>"+ list.nno + "</td><td onclick='moveRead("+list.nno+")'>"+ list.title +"</td><td>"+ list.content +"</td><td>"+ list.writer +"</td><td>"+ list.regdate +"</td><td>"+ list.updatedate +"</td></tr>"
+  }})
+  
+</script>
+
+
+<%@ include file="includes/footer.jsp"%>

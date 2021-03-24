@@ -11,11 +11,11 @@ public class NoticeDTO {
 	
 	private Integer nno;
 	private String title;
-	private String context;
+	private String content;
 	private String writer;
-	private String img;
+	private Boolean show;
+	private String category;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date regdate, updatedate;
-	private Boolean show;
 
 }

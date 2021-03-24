@@ -39,7 +39,7 @@ public class NoticeServiceTests {
 		NoticeDTO dto = new NoticeDTO();
 		
 		dto.setTitle("test");
-		dto.setContext("test context");
+		dto.setContent("test content");
 		dto.setWriter("user00");
 		
 		service.insert(dto);

@@ -19,12 +19,12 @@ public interface NoticeService {
 		
 		dto.setNno(vo.getNno());
 		dto.setTitle(vo.getTitle());
-		dto.setContext(vo.getContext());
+		dto.setContent(vo.getContent());
 		dto.setWriter(vo.getWriter());
-		dto.setImg(vo.getImg());
 		dto.setRegdate(vo.getRegdate());
 		dto.setUpdatedate(vo.getUpdatedate());
 		dto.setShow(vo.getShow());
+		dto.setCategory(vo.getCategory());
 		
 		return dto;
 	}
@@ -35,17 +35,15 @@ public interface NoticeService {
 		Notice vo = Notice.builder()
 				.nno(dto.getNno())
 				.title(dto.getTitle())
-				.context(dto.getContext())
+				.content(dto.getContent())
 				.writer(dto.getWriter())
-				.img(dto.getImg())
 				.regdate(dto.getRegdate())
 				.updatedate(dto.getUpdatedate())
 				.show(dto.getShow())
+				.category(dto.getCategory())
 				.build();
 		
-		return vo;
-		
-		
+		return vo;	
 	}
 	
 }

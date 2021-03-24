@@ -23,7 +23,6 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("getlist...............");
 		
 		return mapper.getList().stream().map(notice -> toDTO(notice)).collect(Collectors.toList());
-		
 	}
 
 	@Override
@@ -38,7 +37,6 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("insert...............");
 		
 		mapper.insert(toDomain(dto));
-		
 	}
 
 }

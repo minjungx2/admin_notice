@@ -3,6 +3,8 @@ package org.judy.notice.controller;
 import org.judy.notice.service.NoticeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -13,12 +15,18 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequiredArgsConstructor
 public class NoticeController {
-	
+
 	private final NoticeService service;
-	
+
 	@GetMapping
 	public void getList() {
-		
+
+	}
+
+	@GetMapping("/read/{nno}")
+	public String getOne(@PathVariable("nno") Integer nno) {
+
+		return "/notice/read";			
 	}
 
 }
