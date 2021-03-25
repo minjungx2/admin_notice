@@ -8,14 +8,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-public class NoticeRestControllerTests extends AbstractControllerTests {
+public class NoticeControllerTests extends AbstractControllerTests {
 
 	@Test
 	public void testList() throws Exception {
 		log.info(mockMvc);
 
 		mockMvc.perform(MockMvcRequestBuilders
-				.get("/notice/list")).andDo(print());
+				.get("/notice/list").param("page", "2").param("perSheet", "10")).andDo(print());
 
 	}
 	

@@ -2,6 +2,7 @@ package org.judy.notice.controller;
 
 import java.util.List;
 
+import org.judy.common.util.PageDTO;
 import org.judy.notice.dto.NoticeDTO;
 import org.judy.notice.service.NoticeService;
 import org.springframework.http.HttpStatus;
@@ -29,12 +30,16 @@ public class NoticeRestController {
 
 	private final NoticeService service;
 	
-	@GetMapping(value = "/", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<NoticeDTO>> getList() {
+	@GetMapping(value = "/{page}/{perSheet}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<NoticeDTO>> getList(@PathVariable("page") Integer page, @PathVariable("perSheet") Integer perSheet) {
 		
 		log.info("list controller..............");
 		
-		return new ResponseEntity<>(service.getList(), HttpStatus.OK);
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPage(page);
+		pageDTO.setPerSheet(perSheet);
+		
+		return new ResponseEntity<>(service.getList(pageDTO), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/{nno}", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -58,7 +63,11 @@ public class NoticeRestController {
 	}
 	
 	@DeleteMapping("/")
-	public void delete() {
+	public void delete(Integer nno) {
+		
+		log.info("delete................");
+		
+		service.delete(nno);
 		
 	}
 	

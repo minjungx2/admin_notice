@@ -1,8 +1,8 @@
 var service = (function() {
   
-   function list(){
+   function list(page,perSheet){
    
-		return fetch("/notice/",{
+		return fetch("/notice/"+page+"/"+perSheet,{
                 method : 'get'
         }).then(res => res.json())
 	}
@@ -16,6 +16,8 @@ var service = (function() {
         }).then(res => res.json())
 	
 	}
+	
+	
 
         return {list:list, read:read}
 

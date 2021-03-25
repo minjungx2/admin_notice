@@ -1,9 +1,9 @@
 package org.judy.notice.service;
 
 import org.judy.common.config.CommonConfig;
+import org.judy.common.util.PageDTO;
 import org.judy.notice.config.NoticeConfig;
 import org.judy.notice.dto.NoticeDTO;
-import org.judy.notice.service.NoticeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,11 @@ public class NoticeServiceTests {
 	@Test
 	public void testList() {
 		
-		log.info(service.getList());
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPage(3);
+		pageDTO.setPerSheet(5);
+		
+		log.info(service.getList(pageDTO));
 		
 	}
 	
@@ -38,12 +42,23 @@ public class NoticeServiceTests {
 		
 		NoticeDTO dto = new NoticeDTO();
 		
-		dto.setTitle("test");
+		dto.setTitle("test10");
 		dto.setContent("test content");
 		dto.setWriter("user00");
+		dto.setCategory("안내");
 		
 		service.insert(dto);
 		
+	}
+	
+	@Test
+	public void testGetTotal() {
+		log.info(service.getTotal());
+	}
+	
+	@Test
+	public void testDelete() {
+		service.delete(504);
 	}
 	
 }

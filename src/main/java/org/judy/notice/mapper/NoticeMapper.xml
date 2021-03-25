@@ -5,15 +5,23 @@
 <mapper namespace="org.judy.notice.mapper.NoticeMapper">
 
 	<select id="getList" resultType="org.judy.notice.domain.Notice">
-		select * from tbl_notice
+		select * from tbl_notice order by nno desc limit #{skip}, #{perSheet};
 	</select>
 	
 	<select id="getOne" resultType="org.judy.notice.domain.Notice">
 		select * from tbl_notice where nno=#{nno}
 	</select>
 	
+	<select id="getTotal" resultType="int">
+		select count(nno) from tbl_notice
+	</select>
+	
 	<insert id="insert">
-	insert into tbl_notice (title,content,writer,img,category) values(#{title}, #{content}, #{writer}, #{img}, #{category})
+	insert into tbl_notice (title,content,writer,category) values(#{title}, #{content}, #{writer}, #{category})
 	</insert>
+	
+	<delete id="delete">
+	delete from tbl_notice where nno = #{nno}
+	</delete>
 	
 </mapper>

@@ -2,16 +2,21 @@ package org.judy.notice.service;
 
 import java.util.List;
 
+import org.judy.common.util.PageDTO;
 import org.judy.notice.domain.Notice;
 import org.judy.notice.dto.NoticeDTO;
 
 public interface NoticeService {
 
-	List<NoticeDTO> getList();
+	List<NoticeDTO> getList(PageDTO pageDTO);
 	
 	NoticeDTO getOne(Integer nno);
 	
 	void insert(NoticeDTO dto);
+	
+	int getTotal();
+	
+	void delete(Integer nno);
 	
 	default NoticeDTO toDTO(Notice vo) {
 		

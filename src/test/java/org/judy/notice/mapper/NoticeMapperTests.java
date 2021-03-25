@@ -1,10 +1,9 @@
 package org.judy.notice.mapper;
 
 import org.judy.common.config.CommonConfig;
+import org.judy.common.util.PageDTO;
 import org.judy.notice.config.NoticeConfig;
 import org.judy.notice.domain.Notice;
-import org.judy.notice.mapper.NoticeMapper;
-import org.judy.time.config.TimeConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,9 @@ public class NoticeMapperTests {
 	
 	@Test
 	public void getListTest() {
-		log.info(mapper.getList());
+		PageDTO pageDTO = new PageDTO();
+		
+		log.info(mapper.getList(pageDTO));
 	}
 	
 	@Test
@@ -44,5 +45,17 @@ public class NoticeMapperTests {
 		mapper.insert(vo);
 		
 	}
+	
+	@Test
+	public void getTotalTest() {
+		
+		log.info(mapper.getTotal());
+	}
 
+	
+	@Test
+	public void deleteTest() {
+		
+		mapper.delete(505);
+	}
 }

@@ -3,6 +3,7 @@ package org.judy.notice.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.judy.common.util.PageDTO;
 import org.judy.notice.dto.NoticeDTO;
 import org.judy.notice.mapper.NoticeMapper;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,12 @@ public class NoticeServiceImpl implements NoticeService {
 	private final NoticeMapper mapper;
 	
 	@Override
-	public List<NoticeDTO> getList() {
+	public List<NoticeDTO> getList(PageDTO pageDTO) {
 
 		log.info("getlist...............");
 		
-		return mapper.getList().stream().map(notice -> toDTO(notice)).collect(Collectors.toList());
+		
+		return mapper.getList(pageDTO).stream().map(notice -> toDTO(notice)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -37,6 +39,19 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("insert...............");
 		
 		mapper.insert(toDomain(dto));
+	}
+
+	@Override
+	public int getTotal() {
+		
+		return mapper.getTotal();
+	}
+
+	@Override
+	public void delete(Integer nno) {
+		
+		mapper.delete(nno);
+		
 	}
 
 }
