@@ -23,6 +23,8 @@ public class NoticeMapperTests {
 	@Test
 	public void getListTest() {
 		PageDTO pageDTO = new PageDTO();
+		pageDTO.setType(null);
+		pageDTO.setKeyword(null);
 		
 		log.info(mapper.getList(pageDTO));
 	}
@@ -48,8 +50,11 @@ public class NoticeMapperTests {
 	
 	@Test
 	public void getTotalTest() {
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setType(null);
+		pageDTO.setKeyword(null);
 		
-		log.info(mapper.getTotal());
+		log.info(mapper.getTotal(pageDTO));
 	}
 
 	

@@ -13,7 +13,7 @@ public interface NoticeMapper {
 	
 	void insert(Notice vo);
 	
-	int getTotal();
+	int getTotal(PageDTO pageDTO);
 	
 	void delete(Integer nno);
 

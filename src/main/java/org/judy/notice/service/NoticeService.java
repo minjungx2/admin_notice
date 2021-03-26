@@ -14,7 +14,7 @@ public interface NoticeService {
 	
 	void insert(NoticeDTO dto);
 	
-	int getTotal();
+	int getTotal(PageDTO pageDTO);
 	
 	void delete(Integer nno);
 	

@@ -1,24 +1,12 @@
 var service = (function() {
-  
-   function list(page,perSheet){
-   
-		return fetch("/notice/"+page+"/"+perSheet,{
-                method : 'get'
-        }).then(res => res.json())
-	}
 	
-	function read(nno){
-	
-		console.log(nno)
-	
+	function deleteNotice(nno){
+		
 		return fetch("/notice/"+nno,{
-                method : 'get'
-        }).then(res => res.json())
-	
+				method : 'post'
+		}).then(res => res.text())
 	}
-	
-	
 
-        return {list:list, read:read}
+        return {deleteNotice:deleteNotice}
 
     }())

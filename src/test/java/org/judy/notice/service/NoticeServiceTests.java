@@ -26,6 +26,8 @@ public class NoticeServiceTests {
 		PageDTO pageDTO = new PageDTO();
 		pageDTO.setPage(3);
 		pageDTO.setPerSheet(5);
+		pageDTO.setKeyword("30");
+		pageDTO.setType("y");
 		
 		log.info(service.getList(pageDTO));
 		
@@ -53,12 +55,15 @@ public class NoticeServiceTests {
 	
 	@Test
 	public void testGetTotal() {
-		log.info(service.getTotal());
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPage(3);
+		pageDTO.setPerSheet(5);
+		log.info(service.getTotal(pageDTO));
 	}
 	
 	@Test
 	public void testDelete() {
-		service.delete(504);
+		service.delete(376);
 	}
 	
 }

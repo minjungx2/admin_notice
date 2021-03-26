@@ -42,9 +42,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int getTotal() {
+	public int getTotal(PageDTO pageDTO) {
 		
-		return mapper.getTotal();
+		return mapper.getTotal(pageDTO);
 	}
 
 	@Override
