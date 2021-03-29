@@ -36,8 +36,7 @@
       </footer> -->
     </div>
   </div>
-  
-  <!--   Core JS Files   -->
+    <!--   Core JS Files   -->
   <script src="/resources/assets/js/core/jquery.min.js"></script>
   <script src="/resources/assets/js/core/popper.min.js"></script>
   <script src="/resources/assets/js/core/bootstrap-material-design.min.js"></script>
@@ -81,6 +80,9 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="/resources/assets/demo/demo.js"></script>
  <!--  <script>
+  
+  
+
   /* 사이드바 선택 페이지 강조 */
     $(document).ready(function() {
       $().ready(function() {
