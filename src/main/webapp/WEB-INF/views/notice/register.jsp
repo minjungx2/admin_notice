@@ -49,7 +49,6 @@
                        <ul class="fileUl">
                        </ul>
                       </div>
-                      
                        <div class="btnContainer">
 						<button class="btn btn-primary btn-round registerBtn">등록</button>
 						<button class="btn btn-primary btn-round listBtn">목록으로</button>
@@ -116,7 +115,7 @@
 </form>
 
 
-<script src="/resources/service.js"></script>
+<script src="/admin/resources/service.js"></script>
 <script>
 	const actionForm = document.querySelector(".actionForm")
 
@@ -159,7 +158,7 @@
 	
 	
 	
-	const fileUL = document.querySelector(".fileUl")
+	const fileUl = document.querySelector(".fileUl")
 	
 	document.querySelector(".uploadBtn").addEventListener("click", function(e){
 		
@@ -175,7 +174,23 @@
 			
 		}
 		
-		service.upload(formdata).then(result => console.log(result))
+		service.upload(formdata).then(jsonObj => 
+		
+		 { console.log(jsonObj)
+			for(var i = 0 ; i< jsonObj.length; i++){
+			
+			var file = jsonObj[i];
+			
+			if(!file.image){
+				
+					console.log(file.link)			
+					fileUl.innerHTML += "<li><a href='/admin/common/notice/download?link="+file.link+"'><i class='fas fa-file'></i></a>"+file.fileName+"<button onclick='delTempImg()'>삭제</button></li>" 
+			
+			}else{
+			fileUl.innerHTML += "<li>"+file.fileName+"<img src='/admin/common/notice/view?link="+file.thumbLink+"'/><button onclick=''>삭제</button></li>"
+
+			}	
+		}})
 		
 	}, false)
 	
@@ -186,6 +201,11 @@
 		actionForm.submit();
 		
 	},false)
+	
+	function delTempImg(){
+		
+		e.preventDefault();
+	}
 	
 </script>
 

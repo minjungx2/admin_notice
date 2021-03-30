@@ -72,7 +72,7 @@
 </form>
 
 
-<script src="/resources/service.js"></script>
+<script src="/admin/resources/service.js"></script>
 <script>
 
 const header = document.querySelector(".noticeHeader")
